@@ -3,7 +3,11 @@
 
 需要手动导入lpack进入cocos2d-x引擎中 
 
+核心代码在 src/network/NetMgr.lua
+
 This is a sample code for an asynchronous TCP socket under the cocos2d-x lua project, from connection to serialization, 
 all done by lua, with detailed comments
 
 Need to manually import lpack into the cocos2d-x engine
+
+the main codes is under src/network/NetMgr.lua 
