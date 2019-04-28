@@ -142,6 +142,7 @@ function NetMgr:disposeReceiveTask()
         local first, sencond = string.byte(buffer, 1, 2)
         -- 这里因为服务端是是小端字节序，所以是first + second * 256
         -- 如果服务端是大端字节序，就是first * 256 + second
+        -- 如果是4字节就往下写就行了
         local len = first + sencond * 256 
         -- 获取到整个包的内容，与头部拼接
         buffer = buffer .. self._socket:receive(len + 2)
@@ -215,7 +216,7 @@ function NetMgr:send(protocolID, event)
         -- }
 
         -- 4:协议号大小  加上3个字符串的长度 加上1个int的长度是4
-        -- 最后加3是因为字符串的发送流，小于2^8的字符串，首字节是表示长度的，如果是2^16的字符串，字符串前2字节是表示的长度
+        -- 最后加3是因为字符串的发送流，小于2^8的字符串，首字节是表示长度的，如果是2^16的字符串，字符串前1字节是表示的长度
         local len = 4 + string.len(event.name) + string.len(event.password) + 4 + string.len(event.key) + 3
         data = string.pack("<Iippip", len, protocolID, event.name, event.password, event.version, event.key)
     end
