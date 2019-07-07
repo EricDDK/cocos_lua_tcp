@@ -1,5 +1,5 @@
 # cocos_lua_tcp
-这是一个cocos2d-x lua 项目下的异步TCP socket的示例代码，从连接到序列化全部交由lua完成实现，有详细注释
+这是一个cocos2d-x lua 项目下的异步非阻塞 TCP socket的示例代码，从连接到序列化全部交由lua完成实现，有详细注释
 
 需要手动导入lpack进入cocos2d-x引擎中 
 
